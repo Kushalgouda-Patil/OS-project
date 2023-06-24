@@ -1,7 +1,4 @@
 #!/bin/bash
-echo "Hello World"
-
-
 
 function update() {
   echo "Updating software..."
