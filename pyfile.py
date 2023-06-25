@@ -12,10 +12,11 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
 url="https://parents.kletech.ac.in/kletechparenteven2023/"
 driver.get(url)
 soup=BeautifulSoup(driver.page_source,features="html.parser")
-usn='01fe21bci051'
-dd=26
-mm='Jul'
-yyyy='2003'
+with open('login.txt','r') as fp:
+    usn=fp.readline()
+    dd=fp.readline()
+    mm=fp.readline()
+    yyyy=fp.readline()
 driver.find_element(by='id',value="username").send_keys(usn)
 driver.find_element(by='id',value="dd").send_keys(dd)
 driver.find_element(by='id',value="mm").send_keys(mm)
@@ -23,7 +24,7 @@ driver.find_element(by='id',value="yyyy").send_keys(yyyy)
 image_div = soup.find_all("img")  
 link=str(image_div[-1])
 image_link = url+re.search(r'src="([^"]+)"', link).group(1)# type:ignore
-#print(image_link.replace("amp;", ""))
+print(image_link.replace("amp;", ""))
 cpa=input("Enter capthcha :")
 driver.find_element(by='id',value="security_code").send_keys(cpa)
 driver.find_element(by="xpath",value='//*[@id="loginPanel"]/div/div[6]/button').click()
