@@ -76,7 +76,7 @@ def main():
     df=pd.DataFrame({'Attendence':attendence_list,'Marks':marks_list},index=course_list)
 
     print(df)
-    df.to_csv('data.csv',index=False)
+    df.to_csv('data.csv')
     driver.quit()
 if __name__=='__main__':
     main()
